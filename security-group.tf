@@ -5,15 +5,27 @@ resource "azurerm_network_security_group" "dan-security-group" {
 
   security_rule {
     name                       = "dan-test-rule"
-    priority                   = 1001
+    priority                   = 1002
     direction                  = "Inbound"
     access                     = "Allow"
-    protocol                   = "*"
+    protocol                   = "Tcp"
     source_port_range          = "*"
-    destination_port_range     = "*"
+    destination_port_range     = "8095"
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
+
+    security_rule {
+    name                       = "dan-ssh-rule"
+    priority                   = 1001
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "22"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  } 
 
   tags = {
     environment = "Test"

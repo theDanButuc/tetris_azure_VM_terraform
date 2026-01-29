@@ -33,3 +33,9 @@ EOF
 
 # Set correct ownership
 chown -R dan:dan /home/dan
+
+# Navigate to dan's home directory
+cd /home/dan
+
+# Start the Docker container using docker-compose
+sudo -u dan docker-compose up -d
